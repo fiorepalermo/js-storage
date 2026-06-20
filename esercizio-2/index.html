@@ -1,15 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Verifica Prima Visita</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 40px;
+            text-align: center;
+            background-color: #f4f7f6;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+    </style>
 </head>
 
 <body>
 
-    <script src="assets/main.js"></script>
+    <div class="card">
+        <div id="welcome-box"></div>
+    </div>
+
+    <script>
+        const isFirstVisit = localStorage.getItem('hasVisited');
+        const welcomeBox = document.querySelector('#welcome-box');
+        const welcomeElement = document.createElement('h1');
+
+        if (!isFirstVisit) {
+            welcomeElement.textContent = "Benvenuto per la prima volta sul nostro sito! 👋";
+            localStorage.setItem('hasVisited', 'true');
+        } else {
+            welcomeElement.textContent = "Bentornato a bordo! 🚀";
+        }
+
+        welcomeBox.appendChild(welcomeElement);
+    </script>
 </body>
 
 </html>

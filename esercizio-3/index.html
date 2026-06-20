@@ -1,14 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Esercizio 3 - Contatore Visite</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 40px;
+            text-align: center;
+            background-color: #eef2f3;
+        }
+
+        .counter-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            display: inline-block;
+        }
+
+        #counterDisplay {
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 
 <body>
-    <script src="assets/main.js"></script>
+
+    <div class="counter-card">
+        <h2>Statistiche di Accesso</h2>
+        <p id="counterDisplay">Calcolo delle visite in corso...</p>
+    </div>
+
+    <script>
+
+        let visits = localStorage.getItem('pageVisits') || 0;
+
+
+        visits = Number(visits) + 1;
+
+
+        localStorage.setItem('pageVisits', visits);
+
+
+        const display = document.querySelector('#counterDisplay');
+        display.textContent = `Hai visitato questa pagina ${visits} volte.`;
+    </script>
 </body>
 
 </html>
